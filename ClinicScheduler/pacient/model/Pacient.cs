@@ -1,31 +1,30 @@
-﻿using ClinicScheduler.user.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicScheduler.user.model
+namespace ClinicScheduler.pacient.model
 {
-    public class User:IComparable<User>,IUserBuilder
+    public class Pacient:IComparable<Pacient>,IPacientBuilder
     {
         private int id;
         private string nume;
         private string parola;
-        private int tip;
+        private DateTime dob;
 
         //Constructors
 
-        public User()
+        public Pacient()
         {
 
         }
-        public User(int id,string nume,string parola,int tip)
+        public Pacient(int id, string nume, string parola, DateTime dob)
         {
             this.id = id;
             this.nume = nume;
             this.parola = parola;
-            this.tip = tip;
+            this.dob = dob;
         }
 
         //Accessors
@@ -43,17 +42,17 @@ namespace ClinicScheduler.user.model
         public string Parola
         {
             get { return this.parola; }
-            set { this.parola = value;}
+            set { this.parola = value; }
         }
-        public int Tip
+        public DateTime Dob
         {
-            get { return this.tip; }
-            set { this.tip = value; }
+            get { return this.dob; }
+            set { this.dob = value; }
         }
 
         //IComparable
 
-        public int CompareTo(User other)
+        public int CompareTo(Pacient other)
         {
             if (this.id > other.id)
             {
@@ -74,37 +73,36 @@ namespace ClinicScheduler.user.model
         }
         public override bool Equals(object obj)
         {
-            User user = obj as User;
+            Pacient pacient = obj as Pacient;
 
-            return user.id.Equals(this.id) &&
-                user.nume.Equals(this.nume) &&
-                user.parola.Equals(this.parola) &&
-                user.tip.Equals(this.tip);
+            return pacient.id.Equals(this.id) &&
+                pacient.nume.Equals(this.nume) &&
+                pacient.parola.Equals(this.parola) &&
+                pacient.dob.Equals(this.dob);
         }
 
         //IBuilder
 
-        public User setId(int id)
+        public Pacient setId(int id)
         {
             this.id = id;
             return this;
         }
-        public User setNume(string nume)
+        public Pacient setNume(string nume)
         {
-           this.nume = nume;
+            this.nume = nume;
             return this;
         }
-        public User setParola(string parola)
+        public Pacient setParola(string parola)
         {
-           this.parola = parola;
+            this.parola = parola;
             return this;
         }
-        public User setTip(int tip)
+        public Pacient setDob(DateTime dob)
         {
-            this.tip = tip;
+            this.dob = dob;
             return this;
         }
-
 
     }
 }

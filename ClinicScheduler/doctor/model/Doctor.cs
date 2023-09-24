@@ -5,27 +5,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicScheduler.user.model
+namespace ClinicScheduler.doctor.model
 {
-    public class User:IComparable<User>,IUserBuilder
+    public class Doctor:IComparable<Doctor>,IDoctorBuilder
     {
         private int id;
         private string nume;
         private string parola;
-        private int tip;
+        private int telefon;
+        private int id_clinica;
 
         //Constructors
 
-        public User()
+        public Doctor()
         {
 
         }
-        public User(int id,string nume,string parola,int tip)
+        public Doctor(int id,string nume,string parola,int telefon,int id_clinica)
         {
             this.id = id;
             this.nume = nume;
             this.parola = parola;
-            this.tip = tip;
+            this.telefon = telefon;
+            this.id_clinica = id_clinica;
         }
 
         //Accessors
@@ -43,17 +45,22 @@ namespace ClinicScheduler.user.model
         public string Parola
         {
             get { return this.parola; }
-            set { this.parola = value;}
+            set { this.parola = value; }
         }
-        public int Tip
+        public int Telefon
         {
-            get { return this.tip; }
-            set { this.tip = value; }
+            get { return this.telefon; }
+            set { this.telefon = value;}
+        }
+        public int ID_clinica
+        {
+            get { return this.id_clinica;}
+            set { this.id_clinica = value;}
         }
 
         //IComparable
 
-        public int CompareTo(User other)
+        public int CompareTo(Doctor other)
         {
             if (this.id > other.id)
             {
@@ -74,37 +81,41 @@ namespace ClinicScheduler.user.model
         }
         public override bool Equals(object obj)
         {
-            User user = obj as User;
+            Doctor doctor = obj as Doctor;
 
-            return user.id.Equals(this.id) &&
-                user.nume.Equals(this.nume) &&
-                user.parola.Equals(this.parola) &&
-                user.tip.Equals(this.tip);
+            return doctor.id.Equals(this.id) &&
+                doctor.nume.Equals(this.nume) &&
+                doctor.parola.Equals(this.parola) &&
+                doctor.telefon.Equals(this.telefon) &&
+                doctor.id_clinica.Equals(this.id_clinica);
         }
 
         //IBuilder
 
-        public User setId(int id)
+        public Doctor setId(int id)
         {
             this.id = id;
             return this;
         }
-        public User setNume(string nume)
+        public Doctor setNume(string nume)
         {
-           this.nume = nume;
+            this.nume = nume;
             return this;
         }
-        public User setParola(string parola)
+        public Doctor setParola(string parola)
         {
-           this.parola = parola;
+            this.parola = parola;
             return this;
         }
-        public User setTip(int tip)
+        public Doctor setTelefon(int telefon)
         {
-            this.tip = tip;
+           this.telefon = telefon;
             return this;
         }
-
-
+        public Doctor setIdClinica(int id_clinica)
+        {
+           this.id_clinica = id_clinica;
+            return this;
+        }
     }
 }

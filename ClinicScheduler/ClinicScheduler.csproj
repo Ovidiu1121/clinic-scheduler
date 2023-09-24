@@ -270,7 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="data\DataAccess.cs" />
-    <Compile Include="data\interfaces\IDataAccess.cs" />
+    <Compile Include="data\IDataAccess.cs" />
+    <Compile Include="doctor\model\Doctor.cs" />
+    <Compile Include="doctor\model\IDoctorBuilder.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,9 +280,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MySqlMigrator\CreareTabeleDB.cs" />
+    <Compile Include="pacient\model\IPacientBuilder.cs" />
+    <Compile Include="pacient\model\Pacient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="user\model\interfaces\IUserBuilder.cs" />
+    <Compile Include="user\model\IUserBuilder.cs" />
     <Compile Include="user\model\User.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -309,6 +313,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
