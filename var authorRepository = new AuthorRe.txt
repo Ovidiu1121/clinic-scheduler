@@ -1,0 +1,12 @@
+var authorRepository = new AuthorRepository("YourConnectionStringHere");
+var author = authorRepository.GetById(1);
+
+if (author != null)
+{
+    Console.WriteLine($"Author: {author.Name}");
+    Console.WriteLine("Books:");
+    foreach (var book in author.Books)
+    {
+        Console.WriteLine($"- {book.Title}");
+    }
+}
