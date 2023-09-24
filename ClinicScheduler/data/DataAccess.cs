@@ -1,4 +1,4 @@
-﻿using ClinicScheduler.data.interfaces;
+﻿using ClinicScheduler.data;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System;

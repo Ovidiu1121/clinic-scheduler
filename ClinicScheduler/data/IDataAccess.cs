@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicScheduler.data.interfaces
+namespace ClinicScheduler.data
 {
     public interface IDataAccess
     {
