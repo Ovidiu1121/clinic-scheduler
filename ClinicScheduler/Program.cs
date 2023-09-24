@@ -1,8 +1,13 @@
-﻿using System;
+﻿using FluentMigrator.Runner.Initialization;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 namespace ClinicScheduler
 {
@@ -17,6 +22,21 @@ namespace ClinicScheduler
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            //string c = Directory.GetCurrentDirectory();
+            //IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();
+            //string connectionStringIs = configuration.GetConnectionString("Default");
+
+            //string connectionString = connectionStringIs;
+
+            //using (var runner = new RunnerContext())
+            //{
+            //    runner.MigrateUp(connectionString);
+            //}
+
         }
+
+        
+
     }
 }

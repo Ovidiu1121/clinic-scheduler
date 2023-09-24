@@ -1,0 +1,16 @@
+using FluentMigrator;
+
+[Migration(20230922100001)] // Use a unique timestamp as the version
+public class AddAuthorColumnToBooks : Migration
+{
+    public override void Up()
+    {
+        Alter.Table("Books")
+            .AddColumn("Author").AsString(255).Nullable();
+    }
+
+    public override void Down()
+    {
+        Delete.Column("Author").FromTable("Books");
+    }
+}
