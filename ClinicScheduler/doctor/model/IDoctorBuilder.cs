@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicScheduler.programare.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace ClinicScheduler.doctor.model
         Doctor setNume(string nume);
         Doctor setParola(string parola);
         Doctor setTelefon(int telefon);
-        Doctor setIdClinica(int id_clinica);
-
+        Doctor setNumeClinica(string nume_clinica);
+        Doctor setProgramari(List<Programare> programari);
     }
 }

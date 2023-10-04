@@ -14,14 +14,6 @@ namespace ClinicScheduler.MySqlMigrator
                 .WithColumn("parola").AsString(255)
                 .WithColumn("tip").AsInt32();
 
-            Create.Table("clinica")
-                .WithColumn("id").AsInt32().PrimaryKey().Identity()
-                .WithColumn("nume").AsString(255)
-                .WithColumn("adresa").AsString(255)
-                .WithColumn("telefon").AsInt32()
-                .WithColumn("servicii").AsString(255)
-                .WithColumn("pret").AsInt32();
-
             Create.Table("doctor")
                  .WithColumn("id").AsInt32().PrimaryKey().Identity()
                  .WithColumn("nume").AsString(255)

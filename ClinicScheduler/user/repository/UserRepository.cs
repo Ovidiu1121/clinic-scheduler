@@ -23,7 +23,7 @@ namespace ClinicScheduler.user.repository
             this.dataAccess = new DataAccess();
             this.connectionString =GetConnection();
 
-            users = new List<User>();
+            this.users = new List<User>();
             load();
         }
 
@@ -31,42 +31,48 @@ namespace ClinicScheduler.user.repository
 
         public void load()
         {
-            List<User> lst = getAllUsers();
+            List<User> lst = GetAllUsers();
 
             foreach (User user in lst)
             {
                 users.Add(user);
             }
         }
-        public void addUser(User user)
+        public void Add(User user)
         {
             string sql = "insert into user(nume,parola,tip) values(@nume,@parola,@tip)";
 
             this.dataAccess.SaveData(sql, new { user.Nume, user.Parola, user.Tip}, connectionString);
         }
-        public void deleteUser(int id)
+        public void Remove(int id)
         {
             string sql = "delete from user where id=@id";
 
             this.dataAccess.SaveData(sql, new { id }, connectionString);
         }
-        public List<User> getAllUsers()
+        public List<User> GetAllUsers()
         {
             string sql = "select * from user";
 
             return dataAccess.LoadData<User, dynamic>(sql, new { }, connectionString);
         }
-        public User getUserById(int id)
+        public User GetById(int id)
         {
             string sql = "select * from user where id=@id";
 
             return this.dataAccess.LoadData<User, dynamic>(sql, new { id }, connectionString)[0];
         }
-        public void updateUser(User user)
+        public User GetByNume(string nume)
         {
-            string sql = "update user set nume=@nume,parola=@parola,tip=@tip";
+            string sql = "select * from user where nume=@nume";
 
-            this.dataAccess.SaveData(sql, new { user.Nume,user.Parola,user.Tip }, connectionString);
+            return this.dataAccess.LoadData<User, dynamic>(sql, new { nume }, connectionString)[0];
+        }
+        public void EditById(int id,User user)
+        {
+            string sql = "update user set nume=@nume,parola=@parola,tip=@tip where id=@id";
+
+            this.dataAccess.SaveData(sql, new { user.Nume,user.Parola,user.Tip,id }, connectionString);
         }
 
         //Database Connection

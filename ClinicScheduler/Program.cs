@@ -1,8 +1,11 @@
-﻿using FluentMigrator.Runner.Initialization;
+﻿using ClinicScheduler.doctor.model;
+using ClinicScheduler.programare.model;
+using FluentMigrator.Runner.Initialization;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +36,8 @@ namespace ClinicScheduler
             //{
             //    runner.MigrateUp(connectionString);
             //}
+
+
 
         }
 

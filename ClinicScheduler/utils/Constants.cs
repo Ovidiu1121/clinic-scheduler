@@ -8,10 +8,9 @@ namespace ClinicScheduler.utils
 {
     public class Constants
     {
-        public static readonly string USER_DEJA_EXISTENT_EXCEPTION = "Userul exista deja in baza de date";
+        public static readonly string ITEM_DEJA_EXISTENT_EXCEPTION = "Itemul exista deja in baza de date";
 
-        public static readonly string USER_INEXISTENT_EXCEPTION = "Userul nu exista in baza de date";
-
+        public static readonly string ITEM_INEXISTENT_EXCEPTION = "Itemul nu exista in baza de date";
 
     }
 }
