@@ -269,13 +269,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="exceptii\UserInexistentException.cs" />
+    <Compile Include="doctor\repository\DoctorRepository.cs" />
+    <Compile Include="doctor\repository\IDoctorRepository.cs" />
+    <Compile Include="doctor\service\DoctorCommandService.cs" />
+    <Compile Include="doctor\service\DoctorQueryService.cs" />
+    <Compile Include="doctor\service\interfaces\IDoctorCommandService.cs" />
+    <Compile Include="doctor\service\interfaces\IDoctorQueryService.cs" />
+    <Compile Include="doctor\service\singleton\DoctorCommandServiceSingleton.cs" />
+    <Compile Include="doctor\service\singleton\DoctorQueryServiceSingleton.cs" />
+    <Compile Include="exceptii\ItemInexistentException.cs" />
+    <Compile Include="pacient\repository\IPacientRepository.cs" />
+    <Compile Include="pacient\repository\PacientRepository.cs" />
+    <Compile Include="pacient\service\interfaces\IPacientCommandService.cs" />
+    <Compile Include="pacient\service\interfaces\IPacientQueryService.cs" />
+    <Compile Include="pacient\service\PacientCommandService.cs" />
+    <Compile Include="pacient\service\PacientQueryService.cs" />
+    <Compile Include="pacient\service\singleton\PacientCommandServiceSingleton.cs" />
+    <Compile Include="pacient\service\singleton\PacientQueryServiceSingleton.cs" />
+    <Compile Include="programare\model\IProgramareBuilder.cs" />
+    <Compile Include="programare\model\Programare.cs" />
+    <Compile Include="programare\repository\IProgramareRepository.cs" />
+    <Compile Include="programare\repository\ProgramareRepository.cs" />
+    <Compile Include="programare\service\interfaces\IProgramareCommandService.cs" />
+    <Compile Include="programare\service\interfaces\IProgramareQueryService.cs" />
+    <Compile Include="programare\service\ProgramareCommandService.cs" />
+    <Compile Include="programare\service\ProgramareQueryService.cs" />
+    <Compile Include="programare\service\singleton\ProgramareCommandServiceSingleton.cs" />
+    <Compile Include="programare\service\singleton\ProgramareQueryServiceSingleton.cs" />
+    <Compile Include="serviciu\model\IServiciuBuilder.cs" />
+    <Compile Include="serviciu\model\Serviciu.cs" />
+    <Compile Include="serviciu\repository\IServiciuRepository.cs" />
+    <Compile Include="serviciu\repository\ServiciuRepository.cs" />
+    <Compile Include="serviciu\service\interfaces\IServiciuCommandService.cs" />
+    <Compile Include="serviciu\service\interfaces\IServiciuQueryService.cs" />
+    <Compile Include="serviciu\service\ServiciuCommandService.cs" />
+    <Compile Include="serviciu\service\ServiciuQueryService.cs" />
+    <Compile Include="serviciu\service\singleton\ServiciuCommandServiceSingleton.cs" />
+    <Compile Include="serviciu\service\singleton\ServiciuQueryServiceSingleton.cs" />
+    <Compile Include="user\service\interfaces\IUserCommandService.cs" />
+    <Compile Include="user\service\interfaces\IUserQueryService.cs" />
+    <Compile Include="user\service\singleton\UserCommandServiceSingleton.cs" />
+    <Compile Include="user\service\singleton\UserQueryServiceSingleton.cs" />
+    <Compile Include="user\service\UserCommandService.cs" />
+    <Compile Include="user\service\UserQueryService.cs" />
     <Compile Include="utils\Constants.cs" />
     <Compile Include="data\DataAccess.cs" />
     <Compile Include="data\IDataAccess.cs" />
     <Compile Include="doctor\model\Doctor.cs" />
     <Compile Include="doctor\model\IDoctorBuilder.cs" />
-    <Compile Include="exceptii\UserDejaExistentException.cs" />
+    <Compile Include="exceptii\ItemDejaExistentException.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,8 +333,6 @@
     <Compile Include="user\model\User.cs" />
     <Compile Include="user\repository\IUserRepository.cs" />
     <Compile Include="user\repository\UserRepository.cs" />
-    <Compile Include="user\service\IUserService.cs" />
-    <Compile Include="user\service\UserService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

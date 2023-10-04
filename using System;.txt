@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using Dapper;
+
+class Program
+{
+    static void Main()
+    {
+        string connectionString = "Your_Connection_String_Here";
+
+        using (IDbConnection dbConnection = new SqlConnection(connectionString))
+        {
+            dbConnection.Open();
+
+            string query = @"
+                SELECT 
+                    a.Id AS AuthorId,
+                    a.Name AS AuthorName,
+                    b.Id AS BookId,
+                    b.Title,
+                FROM 
+                    Authors a
+                LEFT JOIN 
+                    Books b ON a.Id = b.AuthorId";
+
+            var authorDictionary = new Dictionary<int, Author>();
+
+            var authors = dbConnection.Query<Author, Book, Author>(
+                query,
+                (author, book) =>
+                {
+                    if (!authorDictionary.TryGetValue(author.Id, out var currentAuthor))
+                    {
+                        currentAuthor = author;
+                        currentAuthor.Books = new List<Book>();
+                        authorDictionary.Add(currentAuthor.Id, currentAuthor);
+                    }
+                    book.Author = currentAuthor;
+                    currentAuthor.Books.Add(book);
+                    return currentAuthor;
+                },
+                splitOn: "BookId"
+            );
+
+            foreach (var author in authors.Distinct())
+            {
+                Console.WriteLine($"Author: {author.Name}");
+                foreach (var book in author.Books)
+                {
+                    Console.WriteLine($"  - Book: {book.Title} (Author: {book.Author.Name})");
+                }
+            }
+        }
+    }
+}

@@ -1,33 +1,42 @@
-﻿using ClinicScheduler.user.model;
+﻿using ClinicScheduler.programare.model;
+using ClinicScheduler.user.model;
+using Dapper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 namespace ClinicScheduler.doctor.model
 {
-    public class Doctor:IComparable<Doctor>,IDoctorBuilder
+    public class Doctor:User,IComparable<Doctor>,IDoctorBuilder
     {
         private int id;
         private string nume;
         private string parola;
         private int telefon;
-        private int id_clinica;
+        private string nume_clinica;
+        private List<Programare> programari;
 
         //Constructors
 
-        public Doctor()
+        public Doctor() 
         {
-
+            GetProgramari();
         }
-        public Doctor(int id,string nume,string parola,int telefon,int id_clinica)
+        public Doctor(int id,string nume,string parola,int telefon,string nume_clinica)
         {
             this.id = id;
             this.nume = nume;
             this.parola = parola;
             this.telefon = telefon;
-            this.id_clinica = id_clinica;
+            this.nume_clinica = nume_clinica;
         }
 
         //Accessors
@@ -52,10 +61,15 @@ namespace ClinicScheduler.doctor.model
             get { return this.telefon; }
             set { this.telefon = value;}
         }
-        public int ID_clinica
+        public string Nume_clinica
         {
-            get { return this.id_clinica;}
-            set { this.id_clinica = value;}
+            get { return this.nume_clinica; }
+            set { this.nume_clinica = value;}
+        }
+        public List<Programare> Programari
+        {
+            get { return this.programari; }
+            set { this.programari = value; }
         }
 
         //IComparable
@@ -87,7 +101,7 @@ namespace ClinicScheduler.doctor.model
                 doctor.nume.Equals(this.nume) &&
                 doctor.parola.Equals(this.parola) &&
                 doctor.telefon.Equals(this.telefon) &&
-                doctor.id_clinica.Equals(this.id_clinica);
+                doctor.nume_clinica.Equals(this.nume_clinica);
         }
 
         //IBuilder
@@ -112,10 +126,59 @@ namespace ClinicScheduler.doctor.model
            this.telefon = telefon;
             return this;
         }
-        public Doctor setIdClinica(int id_clinica)
+        public Doctor setNumeClinica(string nume_clinica)
         {
-           this.id_clinica = id_clinica;
+           this.nume_clinica = nume_clinica;
             return this;
         }
+        public Doctor setProgramari(List<Programare> programari)
+        {
+           this.programari = programari;
+            return this;
+        }
+
+        //Methods
+
+        public void GetProgramari()
+        {
+            string connectionString = GetConnection();
+
+            using (IDbConnection dbConnection = new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+
+                string query = @" SELECT 
+                programare.id,pacient_id,doctor_id,serviciu_id,data_inceput,data_inceput from doctor
+                left join programare on doctor.id = programare.doctor_id";
+
+                var doctorDictionary = new Dictionary<int, Doctor>();
+
+                var doctors = dbConnection.Query<Doctor, Programare, Doctor>(
+                query,
+                (doctor, programare) =>
+                {
+                    if (!doctorDictionary.TryGetValue(doctor.Id, out var currentDoctor))
+                    {
+                        currentDoctor=doctor;
+                        currentDoctor.programari=new List<Programare>();
+                        doctorDictionary.Add(currentDoctor.Id, currentDoctor);
+                    }
+                    currentDoctor.programari.Add(programare);
+                    return currentDoctor;
+                },
+                 splitOn: "ProgramareId"
+                );
+            };
+            
+        }
+        public string GetConnection()
+        {
+            string c = Directory.GetCurrentDirectory();
+            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();
+            string connectionStringIs = configuration.GetConnectionString("Default");
+            return connectionStringIs;
+        }
+
+
     }
 }

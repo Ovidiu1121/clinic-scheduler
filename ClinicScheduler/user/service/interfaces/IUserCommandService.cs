@@ -5,16 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicScheduler.user.repository
+namespace ClinicScheduler.user.service.interfaces
 {
-    public interface IUserRepository
+    public interface IUserCommandService
     {
-
         void Add(User user);
-        void EditById(int id,User user);
         void Remove(int id);
-        User GetById(int id);
-        User GetByNume(string nume);
+        void EditById(int id, User user);
         List<User> GetAllUsers();
 
     }
