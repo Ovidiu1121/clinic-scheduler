@@ -278,6 +278,24 @@
     <Compile Include="doctor\service\singleton\DoctorCommandServiceSingleton.cs" />
     <Compile Include="doctor\service\singleton\DoctorQueryServiceSingleton.cs" />
     <Compile Include="exceptii\ItemInexistentException.cs" />
+    <Compile Include="mockups\MockupHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupHome.Designer.cs">
+      <DependentUpon>MockupHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mockups\MockupLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupLogIn.Designer.cs">
+      <DependentUpon>MockupLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mockups\MockupRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupRegister.Designer.cs">
+      <DependentUpon>MockupRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="pacient\repository\IPacientRepository.cs" />
     <Compile Include="pacient\repository\PacientRepository.cs" />
     <Compile Include="pacient\service\interfaces\IPacientCommandService.cs" />
@@ -324,7 +342,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MySqlMigrator\CreareTabeleDB.cs" />
+    <Compile Include="mySqlMigrator\CreareTabeleDB.cs" />
     <Compile Include="pacient\model\IPacientBuilder.cs" />
     <Compile Include="pacient\model\Pacient.cs" />
     <Compile Include="Program.cs" />
@@ -335,6 +353,15 @@
     <Compile Include="user\repository\UserRepository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupHome.resx">
+      <DependentUpon>MockupHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupLogIn.resx">
+      <DependentUpon>MockupLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupRegister.resx">
+      <DependentUpon>MockupRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
