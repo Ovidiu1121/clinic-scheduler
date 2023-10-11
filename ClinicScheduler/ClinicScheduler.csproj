@@ -278,6 +278,18 @@
     <Compile Include="doctor\service\singleton\DoctorCommandServiceSingleton.cs" />
     <Compile Include="doctor\service\singleton\DoctorQueryServiceSingleton.cs" />
     <Compile Include="exceptii\ItemInexistentException.cs" />
+    <Compile Include="forms\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="mockups\MockupHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +316,12 @@
     <Compile Include="pacient\service\PacientQueryService.cs" />
     <Compile Include="pacient\service\singleton\PacientCommandServiceSingleton.cs" />
     <Compile Include="pacient\service\singleton\PacientQueryServiceSingleton.cs" />
+    <Compile Include="panels\PnlLogIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="panels\PnlRegister.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="programare\model\IProgramareBuilder.cs" />
     <Compile Include="programare\model\Programare.cs" />
     <Compile Include="programare\repository\IProgramareRepository.cs" />
@@ -353,6 +371,12 @@
     <Compile Include="user\repository\UserRepository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mockups\MockupHome.resx">
       <DependentUpon>MockupHome.cs</DependentUpon>
