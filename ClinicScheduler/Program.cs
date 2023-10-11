@@ -1,4 +1,5 @@
 ﻿using ClinicScheduler.doctor.model;
+using ClinicScheduler.forms;
 using ClinicScheduler.programare.model;
 using FluentMigrator.Runner.Initialization;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +25,7 @@ namespace ClinicScheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmHome());
 
             //string c = Directory.GetCurrentDirectory();
             //IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();

@@ -278,6 +278,36 @@
     <Compile Include="doctor\service\singleton\DoctorCommandServiceSingleton.cs" />
     <Compile Include="doctor\service\singleton\DoctorQueryServiceSingleton.cs" />
     <Compile Include="exceptii\ItemInexistentException.cs" />
+    <Compile Include="forms\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mockups\MockupHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupHome.Designer.cs">
+      <DependentUpon>MockupHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mockups\MockupLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupLogIn.Designer.cs">
+      <DependentUpon>MockupLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mockups\MockupRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupRegister.Designer.cs">
+      <DependentUpon>MockupRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="pacient\repository\IPacientRepository.cs" />
     <Compile Include="pacient\repository\PacientRepository.cs" />
     <Compile Include="pacient\service\interfaces\IPacientCommandService.cs" />
@@ -286,6 +316,12 @@
     <Compile Include="pacient\service\PacientQueryService.cs" />
     <Compile Include="pacient\service\singleton\PacientCommandServiceSingleton.cs" />
     <Compile Include="pacient\service\singleton\PacientQueryServiceSingleton.cs" />
+    <Compile Include="panels\PnlLogIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="panels\PnlRegister.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="programare\model\IProgramareBuilder.cs" />
     <Compile Include="programare\model\Programare.cs" />
     <Compile Include="programare\repository\IProgramareRepository.cs" />
@@ -324,7 +360,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MySqlMigrator\CreareTabeleDB.cs" />
+    <Compile Include="mySqlMigrator\CreareTabeleDB.cs" />
     <Compile Include="pacient\model\IPacientBuilder.cs" />
     <Compile Include="pacient\model\Pacient.cs" />
     <Compile Include="Program.cs" />
@@ -335,6 +371,21 @@
     <Compile Include="user\repository\UserRepository.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupHome.resx">
+      <DependentUpon>MockupHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupLogIn.resx">
+      <DependentUpon>MockupLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupRegister.resx">
+      <DependentUpon>MockupRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
