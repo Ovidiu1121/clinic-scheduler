@@ -25,7 +25,7 @@ namespace ClinicScheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmHome());
+            Application.Run(new FrmMain());
 
             //string c = Directory.GetCurrentDirectory();
             //IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();

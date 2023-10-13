@@ -316,6 +316,15 @@
     <Compile Include="pacient\service\PacientQueryService.cs" />
     <Compile Include="pacient\service\singleton\PacientCommandServiceSingleton.cs" />
     <Compile Include="pacient\service\singleton\PacientQueryServiceSingleton.cs" />
+    <Compile Include="panels\PnlAside.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="panels\PnlHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="panels\PnlHome.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="panels\PnlLogIn.cs">
       <SubType>Component</SubType>
     </Compile>
