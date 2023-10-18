@@ -28,7 +28,7 @@ namespace ClinicScheduler.forms
             this.pnlaside=new PnlAside(this);
             this.Controls.Add(this.pnlaside);
 
-            this.activepanel=new PnlHome(this);
+            this.activepanel=new PnlPatientsPage(this);
             this.Controls.Add(this.activepanel);
 
         }

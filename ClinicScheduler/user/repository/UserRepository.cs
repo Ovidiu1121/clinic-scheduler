@@ -12,7 +12,7 @@ namespace ClinicScheduler.user.repository
 {
     public class UserRepository : IUserRepository
     {
-        private List<User> users;
+        public List<User> users;
         private string connectionString;
         private DataAccess dataAccess;
 

@@ -1,6 +1,10 @@
 ﻿using ClinicScheduler.doctor.model;
 using ClinicScheduler.forms;
 using ClinicScheduler.programare.model;
+using ClinicScheduler.user.model;
+using ClinicScheduler.user.repository;
+using ClinicScheduler.user.service;
+using ClinicScheduler.user.service.interfaces;
 using FluentMigrator.Runner.Initialization;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -38,7 +42,12 @@ namespace ClinicScheduler
             //    runner.MigrateUp(connectionString);
             //}
 
+            //IUserQueryService a=new UserQueryService();
 
+            //User user = a.GetByNume("Ana");
+            //User expected = new User(1, "Ana", "parola1", 1);
+
+            //Debug.WriteLine(user.ToString());
 
         }
 

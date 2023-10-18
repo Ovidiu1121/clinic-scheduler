@@ -70,7 +70,7 @@ namespace ClinicScheduler.user.model
         }
         public override string ToString()
         {
-            return this.nume;
+            return this.id+","+this.nume+","+this.parola+","+this.tip;
         }
         public override bool Equals(object obj)
         {

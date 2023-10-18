@@ -302,6 +302,12 @@
     <Compile Include="mockups\MockupLogIn.Designer.cs">
       <DependentUpon>MockupLogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="mockups\MockupPatientsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupPatientsPage.Designer.cs">
+      <DependentUpon>MockupPatientsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="mockups\MockupRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="panels\PnlLogIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="panels\PnlPatientsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="panels\PnlRegister.cs">
@@ -392,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mockups\MockupLogIn.resx">
       <DependentUpon>MockupLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupPatientsPage.resx">
+      <DependentUpon>MockupPatientsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mockups\MockupRegister.resx">
       <DependentUpon>MockupRegister.cs</DependentUpon>

@@ -104,19 +104,9 @@ namespace ClinicScheduler.panels
             this.btnpacienti.TextAlign=ContentAlignment.MiddleLeft;
             this.btnpacienti.Font=new Font("Arial", 10, FontStyle.Regular);
 
-            this.btnpacienti=new Button();
-            this.Controls.Add(this.btnpacienti);
-            this.btnpacienti.Location=new Point(0, 462);
-            this.btnpacienti.Size=new Size(206, 40);
-            this.btnpacienti.Text="Pacienti";
-            this.btnpacienti.FlatAppearance.BorderSize=1;
-            this.btnpacienti.FlatStyle=FlatStyle.Flat;
-            this.btnpacienti.TextAlign=ContentAlignment.MiddleLeft;
-            this.btnpacienti.Font=new Font("Arial", 10, FontStyle.Regular);
-
             this.btnplati=new Button();
             this.Controls.Add(this.btnplati);
-            this.btnplati.Location=new Point(0, 502);
+            this.btnplati.Location=new Point(0, 462);
             this.btnplati.Size=new Size(206, 40);
             this.btnplati.Text="Plati";
             this.btnplati.FlatAppearance.BorderSize=1;
@@ -126,7 +116,7 @@ namespace ClinicScheduler.panels
 
             this.btnrapoarte=new Button();
             this.Controls.Add(this.btnrapoarte);
-            this.btnrapoarte.Location=new Point(0, 542);
+            this.btnrapoarte.Location=new Point(0, 502);
             this.btnrapoarte.Size=new Size(206, 40);
             this.btnrapoarte.Text="Rapoarte";
             this.btnrapoarte.FlatAppearance.BorderSize=1;
@@ -136,7 +126,7 @@ namespace ClinicScheduler.panels
 
             this.btnfacturi=new Button();
             this.Controls.Add(this.btnfacturi);
-            this.btnfacturi.Location=new Point(0, 582);
+            this.btnfacturi.Location=new Point(0, 542);
             this.btnfacturi.Size=new Size(206, 40);
             this.btnfacturi.Text="Facturi";
             this.btnfacturi.FlatAppearance.BorderSize=1;
@@ -146,7 +136,7 @@ namespace ClinicScheduler.panels
 
             this.btnsetari=new Button();
             this.Controls.Add(this.btnsetari);
-            this.btnsetari.Location=new Point(0, 622);
+            this.btnsetari.Location=new Point(0, 582);
             this.btnsetari.Size=new Size(206, 40);
             this.btnsetari.Text="Setari";
             this.btnsetari.FlatAppearance.BorderSize=1;
