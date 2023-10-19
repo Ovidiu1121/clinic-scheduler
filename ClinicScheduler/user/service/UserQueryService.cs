@@ -13,7 +13,7 @@ namespace ClinicScheduler.user.service
 {
     public class UserQueryService : IUserQueryService
     {
-        public IUserRepository userRepo;
+        public UserRepository userRepo;
 
         public UserQueryService()
         {
