@@ -28,7 +28,6 @@ namespace ClinicScheduler.doctor.model
 
         public Doctor() 
         {
-            GetProgramari();
         }
         public Doctor(int id,string nume,string parola,int telefon,string nume_clinica)
         {
@@ -137,47 +136,6 @@ namespace ClinicScheduler.doctor.model
             return this;
         }
 
-        //Methods
-
-        public void GetProgramari()
-        {
-            string connectionString = GetConnection();
-
-            using (IDbConnection dbConnection = new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-
-                string query = @" SELECT 
-                programare.id,pacient_id,doctor_id,serviciu_id,data_inceput,data_inceput from doctor
-                left join programare on doctor.id = programare.doctor_id";
-
-                var doctorDictionary = new Dictionary<int, Doctor>();
-
-                var doctors = dbConnection.Query<Doctor, Programare, Doctor>(
-                query,
-                (doctor, programare) =>
-                {
-                    if (!doctorDictionary.TryGetValue(doctor.Id, out var currentDoctor))
-                    {
-                        currentDoctor=doctor;
-                        currentDoctor.programari=new List<Programare>();
-                        doctorDictionary.Add(currentDoctor.Id, currentDoctor);
-                    }
-                    currentDoctor.programari.Add(programare);
-                    return currentDoctor;
-                },
-                 splitOn: "ProgramareId"
-                );
-            };
-            
-        }
-        public string GetConnection()
-        {
-            string c = Directory.GetCurrentDirectory();
-            IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();
-            string connectionStringIs = configuration.GetConnectionString("Default");
-            return connectionStringIs;
-        }
 
 
     }
