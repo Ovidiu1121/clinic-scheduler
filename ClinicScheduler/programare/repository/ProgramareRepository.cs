@@ -12,14 +12,14 @@ namespace ClinicScheduler.programare.repository
 {
     public class ProgramareRepository : IProgramareRepository
     {
-        List<Programare> programari;
+        private List<Programare> programari;
         private DataAccess dataAccess;
         private string connectionString;
         public ProgramareRepository()
         {
-            this.programari = new List<Programare>();
             this.dataAccess = new DataAccess();
             this.connectionString=GetConnection();
+            this.programari = new List<Programare>();
 
             load();
         }
@@ -28,14 +28,14 @@ namespace ClinicScheduler.programare.repository
         {
             List<Programare> lista = GetAllProgramari();
 
-            foreach (Programare programare in lista)
+            foreach (Programare pro in lista)
             {
-                this.programari.Add(programare);
+                this.programari.Add(pro);
             }
         }
         public void Add(Programare programare)
         {
-            string sql = "insert into programare(pacient_id,doctor_id,serviciu_id,data_inceput,data_sfarsit) values(@pacient_id,@doctor_id,@serviciu_id,@data_inceput,@data_sfarsit)";
+            string sql = "insert into programare(pacient_id,doctor_id,serviciu_id,data_inceput,data_sfarsit) values(@pacient_id,@doctor_id,@serviciu_id,@data_inceput,@data-sfarsit))";
 
             this.dataAccess.SaveData(sql, new {programare.PacientId,programare.DoctorId,programare.ServiciuId,
                 programare.DataInceput,programare.DataSfarsit}, connectionString);

@@ -1,6 +1,8 @@
 ﻿using ClinicScheduler.doctor.model;
 using ClinicScheduler.forms;
 using ClinicScheduler.programare.model;
+using ClinicScheduler.programare.repository;
+using ClinicScheduler.programare.service;
 using ClinicScheduler.user.model;
 using ClinicScheduler.user.repository;
 using ClinicScheduler.user.service;
@@ -27,9 +29,9 @@ namespace ClinicScheduler
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new FrmMain());
 
             //string c = Directory.GetCurrentDirectory();
             //IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(c).AddJsonFile("appsettings.json").Build();
@@ -42,12 +44,17 @@ namespace ClinicScheduler
             //    runner.MigrateUp(connectionString);
             //}
 
-            //IUserQueryService a=new UserQueryService();
 
-            //User user = a.GetByNume("Ana");
-            //User expected = new User(1, "Ana", "parola1", 1);
+            ProgramareRepository a = new ProgramareRepository();
+            List<Programare> programari2 = a.GetAllProgramari();
 
-            //Debug.WriteLine(user.ToString());
+            //Programare pr = new Programare(12, 2, 18, 2, new DateTime(2020, 2, 1), new DateTime(2012, 4, 13));
+            //a.Add(pr);
+
+            foreach (Programare program in programari2)
+            {
+                Debug.WriteLine(program.ToString());
+            }
 
         }
 
