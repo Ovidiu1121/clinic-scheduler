@@ -17,5 +17,6 @@ namespace ClinicScheduler.user.repository
         User GetByNume(string nume);
         List<User> GetAllUsers();
 
+
     }
 }

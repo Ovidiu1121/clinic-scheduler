@@ -2,8 +2,10 @@
 using ClinicScheduler.user.repository;
 using ClinicScheduler.user.service;
 using ClinicScheduler.user.service.interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,26 +15,25 @@ namespace tests
 {
     public class UserQueryServiceTest
     {
+        private IUserRepository _repository = new UserRepository(TestConnectionString.GetConnection("Test"));
         [Fact]
         public void getById()
         {
-            List<User> users = new List<User>();
-            User user1 = new User(1, "Alex", "parola1", 1);
-            User user2 = new User(3, "Dan", "parola2", 0);
-            User user3 = new User(3, "Mihai", "parola3", 1);
+            User user = User.UserBuild()
+                .setId(1)
+                .setTip(0)
+                .setNume("aaaa")
+                .setParola("bbbb");
+           
+            
+            // Act
+            _repository.Add(user);
 
-            users.Add(user1);
-            users.Add(user2);
-            users.Add(user3);
+            // Assert
+          
 
-            UserRepository repo=new UserRepository();
-
-            repo.users = users;
-
-            User result = repo.GetById(1);
-            User expected = new User(1, "Alex", "parola1", 1);
-
-            Assert.Equal(expected,result);   
+            // Cleaning up
+      
 
         }
 

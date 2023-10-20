@@ -91,5 +91,10 @@ namespace ClinicScheduler.serviciu.model
             this.pret=pret;
             return this;
         }
+
+        public static Serviciu ServiciuBuild()
+        {
+            return new Serviciu();
+        }
     }
 }

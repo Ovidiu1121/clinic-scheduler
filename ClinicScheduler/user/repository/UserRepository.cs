@@ -27,6 +27,12 @@ namespace ClinicScheduler.user.repository
             load();
         }
 
+        public UserRepository(string connectionString)
+        {
+            this.dataAccess = new DataAccess();
+            this.connectionString =GetConnection();
+        }
+
         //Methods
 
         public void load()

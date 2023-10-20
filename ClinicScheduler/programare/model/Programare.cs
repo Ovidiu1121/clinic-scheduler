@@ -133,6 +133,10 @@ namespace ClinicScheduler.programare.model
             return this;
         }
 
+        public static Programare ProgramareBuild()
+        {
+            return new Programare();
+        }
 
     }
 }

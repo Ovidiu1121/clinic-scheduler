@@ -106,5 +106,11 @@ namespace ClinicScheduler.user.model
         }
 
 
+        public static User UserBuild()
+        {
+            return new User();
+        }
+
+
     }
 }

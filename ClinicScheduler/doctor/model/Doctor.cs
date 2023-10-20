@@ -136,6 +136,11 @@ namespace ClinicScheduler.doctor.model
             return this;
         }
 
+        public static  Doctor DoctorBuild()
+        {
+            return new Doctor();
+        }
+
 
 
     }
