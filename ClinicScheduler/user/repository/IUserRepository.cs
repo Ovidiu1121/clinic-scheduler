@@ -15,8 +15,9 @@ namespace ClinicScheduler.user.repository
         void Remove(int id);
         User GetById(int id);
         User GetByNume(string nume);
+        int GetLastId();
         List<User> GetAllUsers();
-
+        void Clean();
 
     }
 }

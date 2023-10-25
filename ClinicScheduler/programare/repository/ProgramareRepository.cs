@@ -15,6 +15,7 @@ namespace ClinicScheduler.programare.repository
         private List<Programare> programari;
         private DataAccess dataAccess;
         private string connectionString;
+
         public ProgramareRepository()
         {
             this.dataAccess = new DataAccess();
@@ -22,6 +23,11 @@ namespace ClinicScheduler.programare.repository
             this.programari = new List<Programare>();
 
             load();
+        }
+        public ProgramareRepository(string connectionString)
+        {
+            this.dataAccess = new DataAccess();
+            this.connectionString =connectionString;
         }
 
         public void load()
@@ -68,6 +74,18 @@ namespace ClinicScheduler.programare.repository
             string sql = "delete from programare where id=@id";
 
             this.dataAccess.SaveData(sql, new { id }, connectionString);
+        }
+        public int GetLastId()
+        {
+            string sql = "SELECT LAST_INSERT_ID()";
+
+            return dataAccess.LoadData<int, dynamic>(sql, new { }, connectionString)[0];
+        }
+        public void Clean()
+        {
+            string sql = "delete from programare where id>=0";
+
+            this.dataAccess.LoadData<Programare, dynamic>(sql, new { }, connectionString);
         }
 
 

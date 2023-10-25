@@ -45,16 +45,6 @@ namespace ClinicScheduler
             //}
 
 
-            ProgramareRepository a = new ProgramareRepository();
-            List<Programare> programari2 = a.GetAllProgramari();
-
-            //Programare pr = new Programare(12, 2, 18, 2, new DateTime(2020, 2, 1), new DateTime(2012, 4, 13));
-            //a.Add(pr);
-
-            foreach (Programare program in programari2)
-            {
-                Debug.WriteLine(program.ToString());
-            }
 
         }
 

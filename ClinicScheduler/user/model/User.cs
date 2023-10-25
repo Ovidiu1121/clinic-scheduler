@@ -76,10 +76,7 @@ namespace ClinicScheduler.user.model
         {
             User user = obj as User;
 
-            return user.id.Equals(this.id) &&
-                user.nume.Equals(this.nume) &&
-                user.parola.Equals(this.parola) &&
-                user.tip.Equals(this.tip);
+            return user.nume.Equals(this.nume) && user.parola.Equals(this.parola) && user.tip.Equals(this.tip);
         }
 
         //IBuilder

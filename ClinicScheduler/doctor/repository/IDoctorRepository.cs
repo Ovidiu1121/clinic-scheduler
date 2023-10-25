@@ -15,5 +15,7 @@ namespace ClinicScheduler.doctor.repository
         Doctor GetById(int id);
         Doctor GetByNume(string nume);
         List<Doctor> GetAllDoctors();
+        int GetLastId();
+        void Clean();
     }
 }
