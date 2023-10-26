@@ -290,6 +290,12 @@
     <Compile Include="forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="mockups\MockupAppointmentsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mockups\MockupAppointmentsPage.Designer.cs">
+      <DependentUpon>MockupAppointmentsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="mockups\MockupHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     <Compile Include="pacient\service\PacientQueryService.cs" />
     <Compile Include="pacient\service\singleton\PacientCommandServiceSingleton.cs" />
     <Compile Include="pacient\service\singleton\PacientQueryServiceSingleton.cs" />
+    <Compile Include="panels\PnlAppointmentsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="panels\PnlAside.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -395,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mockups\MockupAppointmentsPage.resx">
+      <DependentUpon>MockupAppointmentsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mockups\MockupHome.resx">
       <DependentUpon>MockupHome.cs</DependentUpon>

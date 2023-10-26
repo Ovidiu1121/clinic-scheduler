@@ -27,6 +27,11 @@ namespace ClinicScheduler.pacient.repository
             load();
       
         }
+        public PacientRepository(string connectionString)
+        {
+            this.dataAccess = new DataAccess();
+            this.connectionString =connectionString;
+        }
 
         //Methods
 
@@ -74,6 +79,18 @@ namespace ClinicScheduler.pacient.repository
             string sql = "delete from pacient where id=@id";
 
             this.dataAccess.SaveData(sql, new { id }, connectionString);
+        }
+        public int GetLastId()
+        {
+            string sql = "SELECT LAST_INSERT_ID()";
+
+            return dataAccess.LoadData<int, dynamic>(sql, new { }, connectionString)[0];
+        }
+        public void Clean()
+        {
+            string sql = "delete from pacient where id>=0";
+
+            this.dataAccess.LoadData<Pacient, dynamic>(sql, new { }, connectionString);
         }
 
         //Database Connection

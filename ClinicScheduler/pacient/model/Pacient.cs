@@ -112,6 +112,11 @@ namespace ClinicScheduler.pacient.model
             return this;
         }
 
+        public static Pacient PacientBuild()
+        {
+            return new Pacient();
+        }
+
         //Methods
 
         public void getProgramari()

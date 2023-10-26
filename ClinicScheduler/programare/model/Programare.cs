@@ -11,8 +11,8 @@ namespace ClinicScheduler.programare.model
     public class Programare:IProgramareBuilder,IComparable<Programare>
     {
         private int id;
-        private Pacient pacientId;
-        private Doctor doctorId;
+        private int pacientId;
+        private int doctorId;
         private int serviciuId;
         private DateTime dataInceput;
         private DateTime dataSfarsit;
@@ -23,7 +23,7 @@ namespace ClinicScheduler.programare.model
         {
 
         }
-        public Programare(int id, Pacient pacientId, Doctor doctorId, int serviciuId, DateTime dataInceput, DateTime dataSfarsit)
+        public Programare(int id, int pacientId, int doctorId, int serviciuId, DateTime dataInceput, DateTime dataSfarsit)
         {
             this.id = id;
             this.pacientId = pacientId;
@@ -40,12 +40,12 @@ namespace ClinicScheduler.programare.model
             get { return this.id; }
             set { this.id = value; }
         }
-        public Pacient PacientId
+        public int PacientId
         {
             get { return this.pacientId; }
             set { this.pacientId = value;}
         }
-        public Doctor DoctorId
+        public int DoctorId
         {
             get { return this.doctorId;}
             set { this.doctorId = value;}
@@ -85,7 +85,8 @@ namespace ClinicScheduler.programare.model
         }
         public override string ToString()
         {
-            return "id:"+this.id.ToString()+"id doctor:"+this.doctorId+"id pacient:"+this.pacientId;
+            return "id:"+this.id.ToString()+", id doctor:"+this.doctorId+", id pacient:"+this.pacientId+
+                ", serviciu id:"+this.serviciuId+", data inceput:"+this.dataInceput+", data sfarsit:"+this.dataSfarsit;
         }
         public override bool Equals(object obj)
         {
@@ -106,12 +107,12 @@ namespace ClinicScheduler.programare.model
             this.id = id;
             return this;
         }
-        public Programare setPacientId(Pacient pacientId)
+        public Programare setPacientId(int pacientId)
         {
             this.pacientId = pacientId;
             return this;
         }
-        public Programare setDoctorId(Doctor doctorId)
+        public Programare setDoctorId(int doctorId)
         {
             this.doctorId = doctorId;
             return this;
@@ -132,6 +133,10 @@ namespace ClinicScheduler.programare.model
             return this;
         }
 
+        public static Programare ProgramareBuild()
+        {
+            return new Programare();
+        }
 
     }
 }

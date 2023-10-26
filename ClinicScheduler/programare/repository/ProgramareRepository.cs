@@ -12,30 +12,36 @@ namespace ClinicScheduler.programare.repository
 {
     public class ProgramareRepository : IProgramareRepository
     {
-        List<Programare> programari;
+        private List<Programare> programari;
         private DataAccess dataAccess;
         private string connectionString;
+
         public ProgramareRepository()
         {
-            this.programari = new List<Programare>();
             this.dataAccess = new DataAccess();
             this.connectionString=GetConnection();
+            this.programari = new List<Programare>();
 
             load();
+        }
+        public ProgramareRepository(string connectionString)
+        {
+            this.dataAccess = new DataAccess();
+            this.connectionString =connectionString;
         }
 
         public void load()
         {
             List<Programare> lista = GetAllProgramari();
 
-            foreach (Programare programare in lista)
+            foreach (Programare pro in lista)
             {
-                this.programari.Add(programare);
+                this.programari.Add(pro);
             }
         }
         public void Add(Programare programare)
         {
-            string sql = "insert into programare(pacient_id,doctor_id,serviciu_id,data_inceput,data_sfarsit) values(@pacient_id,@doctor_id,@serviciu_id,@data_inceput,@data_sfarsit)";
+            string sql = "insert into programare(pacient_id,doctor_id,serviciu_id,data_inceput,data_sfarsit) values(@pacient_id,@doctor_id,@serviciu_id,@data_inceput,@data-sfarsit))";
 
             this.dataAccess.SaveData(sql, new {programare.PacientId,programare.DoctorId,programare.ServiciuId,
                 programare.DataInceput,programare.DataSfarsit}, connectionString);
@@ -68,6 +74,18 @@ namespace ClinicScheduler.programare.repository
             string sql = "delete from programare where id=@id";
 
             this.dataAccess.SaveData(sql, new { id }, connectionString);
+        }
+        public int GetLastId()
+        {
+            string sql = "SELECT LAST_INSERT_ID()";
+
+            return dataAccess.LoadData<int, dynamic>(sql, new { }, connectionString)[0];
+        }
+        public void Clean()
+        {
+            string sql = "delete from programare where id>=0";
+
+            this.dataAccess.LoadData<Programare, dynamic>(sql, new { }, connectionString);
         }
 
 

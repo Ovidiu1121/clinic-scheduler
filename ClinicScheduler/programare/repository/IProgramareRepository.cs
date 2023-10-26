@@ -14,5 +14,7 @@ namespace ClinicScheduler.programare.repository
         void Remove(int id);
         Programare GetById(int id);
         List<Programare> GetAllProgramari();
+        int GetLastId();
+        void Clean();
     }
 }

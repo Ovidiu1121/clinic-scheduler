@@ -15,5 +15,7 @@ namespace ClinicScheduler.serviciu.repository
         Serviciu GetById(int id);
         Serviciu GetByNume(string nume);
         List<Serviciu> GetAllServicii();
+        int GetLastId();
+        void Clean();
     }
 }

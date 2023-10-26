@@ -11,8 +11,8 @@ namespace ClinicScheduler.programare.model
     public interface IProgramareBuilder
     {
         Programare setId(int id);
-        Programare setPacientId(Pacient pacientId);
-        Programare setDoctorId(Doctor doctorId);
+        Programare setPacientId(int pacientId);
+        Programare setDoctorId(int doctorId);
         Programare setServiciuId(int serviciuId);
         Programare setDataInceput(DateTime dataInceput);
         Programare setDataSfarsit(DateTime dataSfarsit);
