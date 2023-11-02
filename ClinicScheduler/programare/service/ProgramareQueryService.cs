@@ -42,6 +42,12 @@ namespace ClinicScheduler.programare.service
             return programare;
         }
 
+        public List<Programare> GetAllProgramari()
+        {
+            List<Programare> programari = this.repo.GetAllProgramari();
+
+            return programari;
+        }
 
     }
 }

@@ -54,7 +54,7 @@ namespace ClinicScheduler.pacient.repository
         {
             string sql = "update pacient set nume=@nume,parola=@parola,dob=@dob where id=@id ";
 
-            this.dataAccess.SaveData(sql, new { pacient.Nume, pacient.Parola, pacient.Dob, pacient.Id }, connectionString);
+            this.dataAccess.SaveData(sql, new { pacient.Nume, pacient.Parola, pacient.Dob, id }, connectionString);
         }
         public List<Pacient> GetAllPacients()
         {

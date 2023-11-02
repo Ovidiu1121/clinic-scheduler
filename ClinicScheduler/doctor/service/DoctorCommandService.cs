@@ -36,30 +36,7 @@ namespace ClinicScheduler.doctor.service
 
         public void EditById(int id, Doctor doctor)
         {
-            List<Doctor> doctors = this.repo.GetAllDoctors();
-            bool flag = false;
-
-            foreach (Doctor d in doctors)
-            {
-                if (d.Equals(doctor))
-                {
-                    flag=true;
-                }
-            }
-
-            if (flag.Equals(false))
-            {
-                throw new ItemInexistentException(Constants.ITEM_INEXISTENT_EXCEPTION);
-            }
-
             this.repo.EditById(id, doctor);
-        }
-
-        public List<Doctor> GetAllDoctors()
-        {
-            List<Doctor> doctors = this.repo.GetAllDoctors();
-
-            return doctors;
         }
 
         public void Remove(int id)

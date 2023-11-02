@@ -4,6 +4,8 @@ using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,71 +17,27 @@ using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBui
 
 namespace ClinicScheduler.doctor.model
 {
-    public class Doctor:User,IComparable<Doctor>,IDoctorBuilder
+    [Table("doctor")]
+    public class Doctor:IComparable<Doctor>,IDoctorBuilder
     {
-        private int id;
-        private string nume;
-        private string parola;
-        private int telefon;
-        private string nume_clinica;
-        private List<Programare> programari;
-
-        //Constructors
-
-        public Doctor() 
-        {
-        }
-        public Doctor(int id,string nume,string parola,int telefon,string nume_clinica)
-        {
-            this.id = id;
-            this.nume = nume;
-            this.parola = parola;
-            this.telefon = telefon;
-            this.nume_clinica = nume_clinica;
-        }
-
-        //Accessors
-
-        public int Id
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
-        public string Nume
-        {
-            get { return this.nume; }
-            set { this.nume = value; }
-        }
-        public string Parola
-        {
-            get { return this.parola; }
-            set { this.parola = value; }
-        }
-        public int Telefon
-        {
-            get { return this.telefon; }
-            set { this.telefon = value;}
-        }
-        public string Nume_clinica
-        {
-            get { return this.nume_clinica; }
-            set { this.nume_clinica = value;}
-        }
-        public List<Programare> Programari
-        {
-            get { return this.programari; }
-            set { this.programari = value; }
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Nume { get; set; }
+        public string Parola { get; set; }
+        public int Telefon { get; set; }
+        public string NumeClinica { get; set; }
+        public List<Programare> Programari { get; set; }
 
         //IComparable
 
         public int CompareTo(Doctor other)
         {
-            if (this.id > other.id)
+            if (this.Id > other.Id)
             {
                 return 1;
             }
-            else if (this.id == other.id)
+            else if (this.Id == other.Id)
             {
                 return 0;
             }
@@ -90,49 +48,49 @@ namespace ClinicScheduler.doctor.model
         }
         public override string ToString()
         {
-            return this.nume;
+            return "id:"+this.Id+",nume:"+this.Nume+",parola:"+this.Parola+",telefon:"+this.Telefon+",nume clinica:"+this.NumeClinica+"\n";
         }
         public override bool Equals(object obj)
         {
             Doctor doctor = obj as Doctor;
 
-            return doctor.id.Equals(this.id) &&
-                doctor.nume.Equals(this.nume) &&
-                doctor.parola.Equals(this.parola) &&
-                doctor.telefon.Equals(this.telefon) &&
-                doctor.nume_clinica.Equals(this.nume_clinica);
+            return doctor.Id.Equals(this.Id) &&
+                doctor.Nume.Equals(this.Nume) &&
+                doctor.Parola.Equals(this.Parola) &&
+                doctor.Telefon.Equals(this.Telefon) &&
+                doctor.NumeClinica.Equals(this.NumeClinica);
         }
 
         //IBuilder
 
         public Doctor setId(int id)
         {
-            this.id = id;
+            this.Id = id;
             return this;
         }
         public Doctor setNume(string nume)
         {
-            this.nume = nume;
+            this.Nume = nume;
             return this;
         }
         public Doctor setParola(string parola)
         {
-            this.parola = parola;
+            this.Parola = parola;
             return this;
         }
         public Doctor setTelefon(int telefon)
         {
-           this.telefon = telefon;
+           this.Telefon = telefon;
             return this;
         }
-        public Doctor setNumeClinica(string nume_clinica)
+        public Doctor setNumeClinica(string numeClinica)
         {
-           this.nume_clinica = nume_clinica;
+           this.NumeClinica = numeClinica;
             return this;
         }
         public Doctor setProgramari(List<Programare> programari)
         {
-           this.programari = programari;
+           this.Programari = programari;
             return this;
         }
 

@@ -10,5 +10,6 @@ namespace ClinicScheduler.programare.service.interfaces
     public interface IProgramareQueryService
     {
         Programare GetById(int id);
+        List<Programare> GetAllProgramari();
     }
 }

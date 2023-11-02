@@ -39,10 +39,13 @@ namespace tests.programare
             _doctorRepository.Add(doctor);
             _pacientRepository.Add(pacient);
 
+            int idPacient=_pacientRepository.GetLastId();
+            int idDoctor=_doctorRepository.GetLastId();
+
             Programare programare = Programare.ProgramareBuild()
                 .setId(1)
-                .setPacientId(1)
-                .setDoctorId(1)
+                .setPacientId(idPacient)
+                .setDoctorId(idDoctor)
                 .setDataInceput(new DateTime(2020, 3, 21))
                 .setDataSfarsit(new DateTime(2020, 3, 25));
 

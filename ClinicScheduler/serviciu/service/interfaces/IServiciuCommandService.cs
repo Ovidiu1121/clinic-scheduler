@@ -12,6 +12,5 @@ namespace ClinicScheduler.serviciu.service.interfaces
         void Add(Serviciu serviciu);
         void Remove(int id);
         void EditById(int id, Serviciu serviciu);
-        List<Serviciu> GetAllServicii();
     }
 }

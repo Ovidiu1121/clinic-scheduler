@@ -11,5 +11,6 @@ namespace ClinicScheduler.serviciu.service.interfaces
     {
         Serviciu GetById(int id);
         Serviciu GetByNume(string nume);
+        List<Serviciu> GetAllServicii();
     }
 }

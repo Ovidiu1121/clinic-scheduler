@@ -37,30 +37,7 @@ namespace ClinicScheduler.serviciu.service
 
         public void EditById(int id, Serviciu serviciu)
         {
-            List<Serviciu> servicii = this.repo.GetAllServicii();
-            bool flag = false;
-
-            foreach (Serviciu s in servicii)
-            {
-                if (s.Equals(serviciu))
-                {
-                    flag=false;
-                }
-            }
-
-            if (flag.Equals(false))
-            {
-                throw new ItemInexistentException(Constants.ITEM_INEXISTENT_EXCEPTION);
-            }
-
             this.repo.EditById(id,serviciu);
-        }
-
-        public List<Serviciu> GetAllServicii()
-        {
-            List<Serviciu> servicii = this.repo.GetAllServicii();
-
-            return servicii;
         }
 
         public void Remove(int id)
@@ -73,7 +50,7 @@ namespace ClinicScheduler.serviciu.service
             {
                 if (s.Equals(serviciu))
                 {
-                    flag=false;
+                    flag=true;
                 }
             }
 

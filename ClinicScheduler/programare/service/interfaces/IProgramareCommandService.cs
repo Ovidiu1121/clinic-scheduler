@@ -12,6 +12,5 @@ namespace ClinicScheduler.programare.service.interfaces
         void Add(Programare programare);
         void Remove(int id);
         void EditById(int id, Programare programare);
-        List<Programare> GetAllProgramari();
     }
 }
