@@ -64,5 +64,12 @@ namespace ClinicScheduler.user.service
             return user;
         }
 
+        public List<User> GetAllUsers()
+        {
+            List<User> users = this.userRepo.GetAllUsers();
+
+            return users;
+        }
+
     }
 }

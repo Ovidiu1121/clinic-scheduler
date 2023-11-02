@@ -11,6 +11,6 @@ namespace ClinicScheduler.user.service.interfaces
     {
         User GetById(int id);
         User GetByNume(string nume);
-
+        List<User> GetAllUsers();
     }
 }

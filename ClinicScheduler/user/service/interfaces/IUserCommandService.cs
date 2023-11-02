@@ -12,7 +12,6 @@ namespace ClinicScheduler.user.service.interfaces
         void Add(User user);
         void Remove(int id);
         void EditById(int id, User user);
-        List<User> GetAllUsers();
 
     }
 }

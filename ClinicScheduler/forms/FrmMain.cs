@@ -21,14 +21,14 @@ namespace ClinicScheduler.forms
         {
             InitializeComponent();
 
-            this.Size=new Size(1393, 700    );
+            this.Size=new Size(1393, 700 );
             this.pnlheader=new PnlHeader(this);
             this.Controls.Add(this.pnlheader);
 
             this.pnlaside=new PnlAside(this);
             this.Controls.Add(this.pnlaside);
 
-            this.activepanel=new PnlAppointmentsPage(this);
+            this.activepanel=new PnlHome    (this);
             this.Controls.Add(this.activepanel);
 
         }

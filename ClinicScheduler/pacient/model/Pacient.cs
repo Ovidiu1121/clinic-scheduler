@@ -4,6 +4,8 @@ using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -13,60 +15,26 @@ using System.Threading.Tasks;
 
 namespace ClinicScheduler.pacient.model
 {
+    [Table("pacient")]
     public class Pacient: IComparable<Pacient>,IPacientBuilder
     {
-        private int id;
-        private string nume;
-        private string parola;
-        private DateTime dob;
-        private List<Programare> programari;
-
-        //Constructors
-
-        public Pacient()
-        {
-
-        }
-        public Pacient(int id, string nume, string parola, DateTime dob)
-        {
-            this.id = id;
-            this.nume = nume;
-            this.parola = parola;
-            this.dob = dob;
-        }
-
-        //Accessors
-
-        public int Id
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
-        public string Nume
-        {
-            get { return this.nume; }
-            set { this.nume = value; }
-        }
-        public string Parola
-        {
-            get { return this.parola; }
-            set { this.parola = value; }
-        }
-        public DateTime Dob
-        {
-            get { return this.dob; }
-            set { this.dob = value; }
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Nume { get; set; }
+        public string Parola { get; set; }
+        public DateTime Dob { get; set; }
+        public List<Programare> programari { get; set; }    
 
         //IComparable
 
         public int CompareTo(Pacient other)
         {
-            if (this.id > other.id)
+            if (this.Id > other.Id)
             {
                 return 1;
             }
-            else if (this.id == other.id)
+            else if (this.Id == other.Id)
             {
                 return 0;
             }
@@ -77,38 +45,38 @@ namespace ClinicScheduler.pacient.model
         }
         public override string ToString()
         {
-            return this.nume;
+            return  "id:"+this.Id+ "\nnume:"+this.Nume+"\nparola:"+this.Parola+"\ndob:"+this.Dob;
         }
         public override bool Equals(object obj)
         {
             Pacient pacient = obj as Pacient;
 
-            return pacient.id.Equals(this.id) &&
-                pacient.nume.Equals(this.nume) &&
-                pacient.parola.Equals(this.parola) &&
-                pacient.dob.Equals(this.dob);
+            return pacient.Id.Equals(this.Id) &&
+                pacient.Nume.Equals(this.Nume) &&
+                pacient.Parola.Equals(this.Parola) &&
+                pacient.Dob.Equals(this.Dob);
         }
 
         //IBuilder
 
         public Pacient setId(int id)
         {
-            this.id = id;
+            this.Id = id;
             return this;
         }
         public Pacient setNume(string nume)
         {
-            this.nume = nume;
+            this.Nume = nume;
             return this;
         }
         public Pacient setParola(string parola)
         {
-            this.parola = parola;
+            this.Parola = parola;
             return this;
         }
         public Pacient setDob(DateTime dob)
         {
-            this.dob = dob;
+            this.Dob = dob;
             return this;
         }
 
@@ -129,7 +97,7 @@ namespace ClinicScheduler.pacient.model
 
                 string query = @" SELECT 
                 programare.id,pacient_id,doctor_id,serviciu_id,data_inceput,data_inceput from pacient
-                left join programare on pacient.id = programare.pacient_id";
+                left join programare on pacient.id = @programare.pacient_id";
 
                 var pacientDictionary = new Dictionary<int, Pacient>();
 

@@ -41,7 +41,6 @@ namespace ClinicScheduler.pacient.service
 
            return pacient;
         }
-
         public Pacient GetByNume(string nume)
         {
             List<Pacient> pacients = repo.GetAllPacients();
@@ -63,7 +62,12 @@ namespace ClinicScheduler.pacient.service
 
             return pacient;
         }
+        public List<Pacient> GetAllPacients()
+        {
+            List<Pacient> pacients = this.repo.GetAllPacients();
 
+            return pacients;
+        }
 
     }
 }

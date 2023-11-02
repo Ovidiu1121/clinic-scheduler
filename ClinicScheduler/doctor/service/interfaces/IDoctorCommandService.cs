@@ -12,7 +12,6 @@ namespace ClinicScheduler.doctor.service
         void Add(Doctor doctor);
         void Remove(int id);
         void EditById(int id, Doctor doctor);
-        List<Doctor> GetAllDoctors();
 
     }
 }

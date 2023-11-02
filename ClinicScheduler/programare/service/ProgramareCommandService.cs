@@ -37,30 +37,7 @@ namespace ClinicScheduler.programare.service
 
         public void EditById(int id, Programare programare)
         {
-            List<Programare> programari = this.repo.GetAllProgramari();
-            bool flag = false;
-
-            foreach (Programare p in programari)
-            {
-                if (p.Equals(programare))
-                {
-                    flag=true;
-                }
-            }
-
-            if (flag.Equals(false))
-            {
-                throw new ItemInexistentException(Constants.ITEM_INEXISTENT_EXCEPTION);
-            }
-
             this.repo.EditById(id, programare);
-        }
-
-        public List<Programare> GetAllProgramari()
-        {
-            List<Programare> programari = this.repo.GetAllProgramari();
-
-            return programari;
         }
 
         public void Remove(int id)

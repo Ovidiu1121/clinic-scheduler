@@ -1,80 +1,46 @@
 ﻿using ClinicScheduler.doctor.model;
 using ClinicScheduler.pacient.model;
+using ClinicScheduler.serviciu.model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClinicScheduler.programare.model
 {
+    [Table("programare")]
     public class Programare:IProgramareBuilder,IComparable<Programare>
     {
-        private int id;
-        private int pacientId;
-        private int doctorId;
-        private int serviciuId;
-        private DateTime dataInceput;
-        private DateTime dataSfarsit;
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public int PacientId { get; set; }
+        public int DoctorId { get; set; }
+        public int ServiciuId { get; set; }
+        public DateTime DataInceput { get; set; }
+        public DateTime DataSfarsit { get; set; }
 
-        //Constructors
+        [ForeignKey("PacientId")]
+        public virtual Pacient Pacient { get; set; }
 
-        public Programare()
-        {
+        [ForeignKey("DoctorId")]
+        public virtual Doctor Doctor { get; set; }
 
-        }
-        public Programare(int id, int pacientId, int doctorId, int serviciuId, DateTime dataInceput, DateTime dataSfarsit)
-        {
-            this.id = id;
-            this.pacientId = pacientId;
-            this.doctorId = doctorId;
-            this.serviciuId = serviciuId;
-            this.dataInceput = dataInceput;
-            this.dataSfarsit = dataSfarsit;
-        }
-
-        //Accessors
-
-        public int Id
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
-        public int PacientId
-        {
-            get { return this.pacientId; }
-            set { this.pacientId = value;}
-        }
-        public int DoctorId
-        {
-            get { return this.doctorId;}
-            set { this.doctorId = value;}
-        }
-        public int ServiciuId
-        {
-            get { return this.serviciuId;}
-            set { this.serviciuId = value;}
-        }
-        public DateTime DataInceput
-        {
-            get { return this.dataInceput;}
-            set { this.dataInceput = value;}
-        }
-        public DateTime DataSfarsit
-        {
-            get { return this.dataSfarsit; }
-            set { this.dataSfarsit = value; }
-        }
+        [ForeignKey("ServiciuId")]
+        public virtual Serviciu Serviciu { get; set; }
 
         //IComparable
 
         public int CompareTo(Programare other)
         {
-            if (this.id > other.id)
+            if (this.Id > other.Id)
             {
                 return 1;
             }
-            else if (this.id == other.id)
+            else if (this.Id == other.Id)
             {
                 return 0;
             }
@@ -85,51 +51,51 @@ namespace ClinicScheduler.programare.model
         }
         public override string ToString()
         {
-            return "id:"+this.id.ToString()+", id doctor:"+this.doctorId+", id pacient:"+this.pacientId+
-                ", serviciu id:"+this.serviciuId+", data inceput:"+this.dataInceput+", data sfarsit:"+this.dataSfarsit;
+            return "id:"+this.Id.ToString()+", id doctor:"+this.DoctorId+", id pacient:"+this.PacientId+
+                ", serviciu id:"+this.ServiciuId+", data inceput:"+this.DataInceput+", data sfarsit:"+this.DataSfarsit;
         }
         public override bool Equals(object obj)
         {
             Programare programare= obj as Programare;
 
-            return programare.id.Equals(this.id)&&
-                programare.pacientId.Equals(this.pacientId)&&
-                programare.doctorId.Equals(this.doctorId)&&
-                programare.serviciuId.Equals(this.serviciuId)&&
-                programare.dataInceput.Equals(this.dataInceput)&&
-                programare.dataSfarsit.Equals(this.dataSfarsit);
+            return programare.Id.Equals(this.Id)&&
+                programare.PacientId.Equals(this.PacientId)&&
+                programare.DoctorId.Equals(this.DoctorId)&&
+                programare.ServiciuId.Equals(this.ServiciuId)&&
+                programare.DataInceput.Equals(this.DataInceput)&&
+                programare.DataSfarsit.Equals(this.DataSfarsit);
         }
 
         //IBuilder
 
         public Programare setId(int id)
         {
-            this.id = id;
+            this.Id = id;
             return this;
         }
         public Programare setPacientId(int pacientId)
         {
-            this.pacientId = pacientId;
+            this.PacientId = pacientId;
             return this;
         }
         public Programare setDoctorId(int doctorId)
         {
-            this.doctorId = doctorId;
+            this.DoctorId = doctorId;
             return this;
         }
         public Programare setServiciuId(int serviciuId)
         {
-           this.serviciuId = serviciuId;
+           this.ServiciuId = serviciuId;
             return this;
         }
         public Programare setDataInceput(DateTime dataInceput)
         {
-          this.dataInceput = dataInceput;
+          this.DataInceput = dataInceput;
             return this;
         }
         public Programare setDataSfarsit(DateTime dataSfarsit)
         {
-            this.dataSfarsit= dataSfarsit;
+            this.DataSfarsit= dataSfarsit;
             return this;
         }
 

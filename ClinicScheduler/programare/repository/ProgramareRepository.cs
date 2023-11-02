@@ -12,7 +12,6 @@ namespace ClinicScheduler.programare.repository
 {
     public class ProgramareRepository : IProgramareRepository
     {
-        private List<Programare> programari;
         private DataAccess dataAccess;
         private string connectionString;
 
@@ -20,9 +19,6 @@ namespace ClinicScheduler.programare.repository
         {
             this.dataAccess = new DataAccess();
             this.connectionString=GetConnection();
-            this.programari = new List<Programare>();
-
-            load();
         }
         public ProgramareRepository(string connectionString)
         {
@@ -30,38 +26,24 @@ namespace ClinicScheduler.programare.repository
             this.connectionString =connectionString;
         }
 
-        public void load()
-        {
-            List<Programare> lista = GetAllProgramari();
-
-            foreach (Programare pro in lista)
-            {
-                this.programari.Add(pro);
-            }
-        }
         public void Add(Programare programare)
         {
-            string sql = "insert into programare(pacient_id,doctor_id,serviciu_id,data_inceput,data_sfarsit) values(@pacient_id,@doctor_id,@serviciu_id,@data_inceput,@data-sfarsit))";
+            string sql = "insert into programare(pacient_id, doctor_id, serviciu_id, data_inceput, data_sfarsit) values(@pacientId,@doctorId,@serviciuId,@dataInceput,@dataSfarsit)";
 
             this.dataAccess.SaveData(sql, new {programare.PacientId,programare.DoctorId,programare.ServiciuId,
                 programare.DataInceput,programare.DataSfarsit}, connectionString);
         }
         public void EditById(int id, Programare programare)
         {
-            string sql = "update user set pacient_id=@pacient_id,doctor_id=@doctor_id,serviciu_id=@serviciu_id,data_inceput=@data_inceput,data_sfarsit=@data_sfarsit where id=@id";
+            string sql = "update user set pacient_id=@PacientId,doctor_id=@DoctorId,serviciu_id=@ServiciuId,data_inceput=@DataInceput,data_sfarsit=@DataSfarsit where id=@id";
 
-            this.dataAccess.SaveData(sql, new {
-                programare.PacientId,
-                programare.DoctorId,
-                programare.ServiciuId,
-                programare.DataInceput,
-                programare.DataSfarsit, id }, connectionString);
+            this.dataAccess.SaveData(sql, new { programare.PacientId, programare.DoctorId, programare.ServiciuId,programare.DataInceput, programare.DataSfarsit, id }, connectionString);
         }
         public List<Programare> GetAllProgramari()
         {
             string sql = "select * from programare";
 
-            return dataAccess.LoadData<Programare, dynamic>(sql, new { }, connectionString);
+            return dataAccess.LoadData<Programare, dynamic>(sql,new { }, connectionString);
         }
         public Programare GetById(int id)
         {

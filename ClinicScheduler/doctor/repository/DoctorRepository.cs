@@ -45,16 +45,16 @@ namespace ClinicScheduler.doctor.repository
         }
         public void Add(Doctor doctor)
         {
-            string sql = "insert into doctor(nume,parola,telefon,nume_clinica) values(@nume,@parola,@telefon,@nume_clinica)";
+            string sql = "insert into doctor(nume,parola,telefon,nume_clinica) values(@nume,@parola,@telefon,@NumeClinica)";
 
-            this.dataAccess.SaveData(sql, new { doctor.Nume, doctor.Parola, doctor.Telefon, doctor.Nume_clinica }, connectionString);
+            this.dataAccess.SaveData(sql, new { doctor.Nume, doctor.Parola, doctor.Telefon, doctor.NumeClinica }, connectionString);
 
         }
         public void EditById(int id, Doctor doctor)
         {
-            string sql = "update doctor set nume=@nume,parola=@parola,telefon=@telefon,nume_clinica=@nume_clinica where id=@id";
+            string sql = "update doctor set nume=@nume,parola=@parola,telefon=@telefon,nume_clinica=@NumeClinica where id=@id";
 
-            this.dataAccess.SaveData(sql, new { doctor.Nume, doctor.Parola, doctor.Telefon,doctor.Nume_clinica, id }, connectionString);
+            this.dataAccess.SaveData(sql, new { doctor.Nume, doctor.Parola, doctor.Telefon,doctor.NumeClinica, id }, connectionString);
         }
         public void Remove(int id)
         {

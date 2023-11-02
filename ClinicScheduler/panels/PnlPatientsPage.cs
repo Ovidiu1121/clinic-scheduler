@@ -46,7 +46,7 @@ namespace ClinicScheduler.panels
             table.Columns.Add("Is Patient",typeof(string));
             table.Columns.Add("Status",typeof (string));
 
-            IUserCommandService service = UserCommandServiceSingleton.Instance;
+            IUserQueryService service = UserQueryServiceSingleton.Instance;
 
             List<User> users =service.GetAllUsers();
 

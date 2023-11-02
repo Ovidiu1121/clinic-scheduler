@@ -1,6 +1,7 @@
 ﻿using ClinicScheduler.exceptii;
 using ClinicScheduler.serviciu.model;
 using ClinicScheduler.serviciu.repository;
+using ClinicScheduler.serviciu.service.interfaces;
 using ClinicScheduler.utils;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ClinicScheduler.serviciu.service
 {
-    public class ServiciuQueryService
+    public class ServiciuQueryService:IServiciuQueryService
     {
         public IServiciuRepository repo;
 
@@ -63,5 +64,11 @@ namespace ClinicScheduler.serviciu.service
             return serviciu;
         }
 
+        public List<Serviciu> GetAllServicii()
+        {
+            List<Serviciu> servicii = this.repo.GetAllServicii();
+
+            return servicii;
+        }
     }
 }

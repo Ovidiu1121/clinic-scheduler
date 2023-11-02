@@ -61,7 +61,7 @@ namespace ClinicScheduler.panels
             table.Columns.Add("Data Inceput", typeof(DateTime));
             table.Columns.Add("Data Sfarsit", typeof(DateTime));
 
-            ProgramareCommandService programareservice = new ProgramareCommandService();
+            ProgramareQueryService programareservice = new ProgramareQueryService();
             PacientQueryService pacientservice = PacientQueryServiceSingleton.Instance;
             DoctorQueryService doctorservice = DoctorQueryServiceSingleton.Instance;
             ServiciuQueryService serviciuservice = ServiciuQueryServiceSingleton.Instance;

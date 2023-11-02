@@ -1,5 +1,6 @@
 ﻿using ClinicScheduler.doctor.model;
 using ClinicScheduler.doctor.repository;
+using ClinicScheduler.doctor.service.interfaces;
 using ClinicScheduler.exceptii;
 using ClinicScheduler.utils;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ClinicScheduler.doctor.service
 {
-    public class DoctorQueryService
+    public class DoctorQueryService:IDoctorQueryService
     {
         public IDoctorRepository repo;
 
@@ -63,6 +64,12 @@ namespace ClinicScheduler.doctor.service
             return doctor;
         }
 
+        public List<Doctor> GetAllDoctors()
+        {
+            List<Doctor> doctors = this.repo.GetAllDoctors();
+
+            return doctors;
+        }
 
     }
 }

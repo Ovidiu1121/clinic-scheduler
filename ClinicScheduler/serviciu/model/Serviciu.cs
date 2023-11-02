@@ -1,58 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClinicScheduler.serviciu.model
 {
+    [Table("serviciu")]
     public class Serviciu:IServiciuBuilder,IComparable<Serviciu>
     {
 
-        private int id;
-        private string nume;
-        private int pret;
-
-        //Constructors
-
-        public Serviciu()
-        {
-
-        }
-        public Serviciu(int id,string nume,int pret)
-        {
-            this.id = id;
-            this.nume = nume;
-            this.pret = pret;
-        }
-
-        //Accessors
-
-        public int Id
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
-        public string Nume
-        {
-            get { return this.nume; }
-            set { this.nume = value; }
-        }
-        public int Pret
-        {
-            get { return this.pret; }
-            set { this.pret = value; }
-        }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Nume { get; set; }
+        public int Pret { get; set; }
 
         //IComparable
 
         public int CompareTo(Serviciu other)
         {
-            if (this.id > other.id)
+            if (this.Id > other.Id)
             {
                 return 1;
             }
-            else if (this.id == other.id)
+            else if (this.Id == other.Id)
             {
                 return 0;
             }
@@ -63,32 +37,32 @@ namespace ClinicScheduler.serviciu.model
         }
         public override string ToString()
         {
-            return this.nume;
+            return "id:"+this.Id+",nume:"+this.Nume+",pret:"+this.Pret+"\n";
         }
         public override bool Equals(object obj)
         {
            Serviciu serviciu=obj as Serviciu;   
 
-            return serviciu.id.Equals(this.id)&&
-                serviciu.nume.Equals(this.nume)&&
-                serviciu.pret.Equals(this.pret);
+            return serviciu.Id.Equals(this.Id)&&
+                serviciu.Nume.Equals(this.Nume)&&
+                serviciu.Pret.Equals(this.Pret);
         }
 
         //IBuilder
 
         public Serviciu setId(int id)
         {
-           this.id=id;
+           this.Id=id;
             return this;
         }
         public Serviciu setNume(string nume)
         {
-            this.nume=nume;
+            this.Nume=nume;
             return this;
         }
         public Serviciu setPret(int pret)
         {
-            this.pret=pret;
+            this.Pret=pret;
             return this;
         }
 
